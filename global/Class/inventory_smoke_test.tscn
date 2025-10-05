@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bovdnr5kpb0r0"]
+
+[ext_resource type="Script" uid="uid://bqsn5k32rwf7e" path="res://global/Class/inventory_smoke_test.gd" id="1_faofc"]
+[ext_resource type="Script" uid="uid://b2vdn881vvfcb" path="res://global/Class/Inventory.gd" id="2_dksjv"]
+
+[node name="inventory_smoke_test" type="Node" node_paths=PackedStringArray("inventory")]
+script = ExtResource("1_faofc")
+inventory = NodePath("Inventory")
+metadata/_custom_type_script = "uid://bqsn5k32rwf7e"
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("2_dksjv")
+max_size = 3
+metadata/_custom_type_script = "uid://b2vdn881vvfcb"
