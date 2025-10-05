@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://deo4c3vyuwwli"]
+[gd_scene load_steps=14 format=3 uid="uid://deo4c3vyuwwli"]
 
 [ext_resource type="Script" uid="uid://cifscvpx05nts" path="res://main/main_game.gd" id="1_r4ock"]
 [ext_resource type="Texture2D" uid="uid://bhcxbw8kry3q4" path="res://ui/bar_bg.png" id="1_ykneo"]
@@ -6,6 +6,20 @@
 [ext_resource type="Texture2D" uid="uid://b8427s4aj5p3o" path="res://ui/bar_fill.png" id="3_ex03x"]
 [ext_resource type="PackedScene" uid="uid://ccuai4dgv4dg0" path="res://main/enemy.tscn" id="4_yx71d"]
 [ext_resource type="PackedScene" uid="uid://baoqmbbxaihyb" path="res://main/player.tscn" id="5_dpe3l"]
+[ext_resource type="Texture2D" uid="uid://rd36oci0d64m" path="res://main/textures/bg1.png" id="5_qfs72"]
+[ext_resource type="Texture2D" uid="uid://bn6k1a0rp2g2n" path="res://main/textures/bg2.png" id="6_1075v"]
+[ext_resource type="Texture2D" uid="uid://cml0gh35x3cvn" path="res://main/textures/bg3.png" id="7_kcb7r"]
+[ext_resource type="Texture2D" uid="uid://c8h5mmssubctk" path="res://main/textures/bg4.png" id="8_i5s3y"]
+[ext_resource type="Texture2D" uid="uid://vxn44v33y4ef" path="res://main/textures/bg5.png" id="9_mhwfl"]
+
+[sub_resource type="Gradient" id="Gradient_ccd8n"]
+colors = PackedColorArray(0.5, 0.25, 0, 1, 0.2, 0.1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yw8t4"]
+gradient = SubResource("Gradient_ccd8n")
+width = 1280
+height = 128
+fill_to = Vector2(0, 1)
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_r4ock")
@@ -64,19 +78,73 @@ tint_progress = Color(1, 0, 0, 1)
 
 [node name="KnifeText" type="Label" parent="UI/Status/Content"]
 layout_mode = 2
-text = "KNIFE: "
+text = "KNIFE 1: "
 
-[node name="TextureRect" type="TextureRect" parent="UI/Status/Content"]
+[node name="Knife1" type="TextureRect" parent="UI/Status/Content"]
 layout_mode = 2
 
-[node name="Parallax2D" type="Parallax2D" parent="."]
+[node name="KnifeText2" type="Label" parent="UI/Status/Content"]
+layout_mode = 2
+text = "KNIFE 2: "
+
+[node name="Knife2" type="TextureRect" parent="UI/Status/Content"]
+layout_mode = 2
+
+[node name="BGLayer1" type="Parallax2D" parent="."]
+scale = Vector2(2.25, 2.25)
+scroll_scale = Vector2(0.1, 1)
+repeat_size = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="BGLayer1"]
+texture = ExtResource("5_qfs72")
+centered = false
+
+[node name="BGLayer2" type="Parallax2D" parent="."]
+scale = Vector2(2.25, 2.25)
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="BGLayer2"]
+texture = ExtResource("6_1075v")
+centered = false
+
+[node name="BGLayer3" type="Parallax2D" parent="."]
+scale = Vector2(2.25, 2.25)
+scroll_scale = Vector2(0.75, 1)
+repeat_size = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="BGLayer3"]
+texture = ExtResource("7_kcb7r")
+centered = false
+
+[node name="BGLayer4" type="Parallax2D" parent="."]
+scale = Vector2(2.25, 2.25)
+scroll_scale = Vector2(0.8, 1)
+repeat_size = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="BGLayer4"]
+texture = ExtResource("8_i5s3y")
+centered = false
+
+[node name="BGLayer5" type="Parallax2D" parent="."]
+scale = Vector2(2.25, 2.25)
+repeat_size = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="BGLayer5"]
+texture = ExtResource("9_mhwfl")
+centered = false
 
 [node name="Enemy" parent="." instance=ExtResource("4_yx71d")]
-position = Vector2(802, 497)
+position = Vector2(840, 592)
 
 [node name="Player" parent="." instance=ExtResource("5_dpe3l")]
-position = Vector2(357, 499)
+position = Vector2(348, 592)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_top = 0
 limit_bottom = 720
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 592)
+texture = SubResource("GradientTexture2D_yw8t4")
+centered = false

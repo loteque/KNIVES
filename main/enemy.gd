@@ -64,7 +64,7 @@ func _attack() -> void:
 func _on_think_timeout() -> void:
 	match _state:
 		EnemyState.HUNT:
-			if self.position.distance_to(_target.position) <= 128:
+			if self.position.distance_to(_target.position) <= 160:
 				_state = EnemyState.ATTACK
 		EnemyState.ATTACK:
 			_attack()

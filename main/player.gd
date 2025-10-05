@@ -2,14 +2,19 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 
+signal hp_changed
+signal player_died
+
 var damage : int = 1
 var inventory : Dictionary = {}
-
 var hp : int = 10 :
 	set(val):
 		hp = max(0, val)
 		if hp == 0:
-			_die()
+			player_died.emit()
+			process_mode = Node.PROCESS_MODE_DISABLED
+		else:
+			hp_changed.emit(hp)
 
 var _flipped : bool = false :
 	set(val):
@@ -18,8 +23,6 @@ var _flipped : bool = false :
 
 
 func _physics_process(_delta: float) -> void:
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	if Input.is_action_just_pressed("attack"):
 		_attack()
 	var direction := Input.get_axis("move_left", "move_right")
@@ -29,11 +32,6 @@ func _physics_process(_delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
-
-
-func _die():
-	#queue_free()
-	pass
 
 
 func _attack():

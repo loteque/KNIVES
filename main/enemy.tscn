@@ -1,17 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://ccuai4dgv4dg0"]
+[gd_scene load_steps=12 format=3 uid="uid://ccuai4dgv4dg0"]
 
 [ext_resource type="Script" uid="uid://b2n8r8os5jb3e" path="res://main/enemy.gd" id="1_7k104"]
-
-[sub_resource type="Gradient" id="Gradient_7k104"]
-colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_4gyqm"]
-gradient = SubResource("Gradient_7k104")
-height = 256
-fill_from = Vector2(1, 1)
+[ext_resource type="Texture2D" uid="uid://pj136ymgmnva" path="res://main/textures/galsia.png" id="2_7vx3w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
-size = Vector2(64, 256)
+size = Vector2(128, 268)
 
 [sub_resource type="Gradient" id="Gradient_4gyqm"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -42,23 +35,6 @@ tracks/0/keys = {
 "values": [Vector2(16, -128)]
 }
 
-[sub_resource type="Animation" id="Animation_8k2t6"]
-resource_name = "attack_right"
-length = 0.5
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HurtBox:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-16, -128), Vector2(80, -128), Vector2(-16, -128)]
-}
-
 [sub_resource type="Animation" id="Animation_fgsch"]
 resource_name = "attack_left"
 length = 0.5
@@ -76,6 +52,23 @@ tracks/0/keys = {
 "values": [Vector2(16, -128), Vector2(-80, -128), Vector2(16, -128)]
 }
 
+[sub_resource type="Animation" id="Animation_8k2t6"]
+resource_name = "attack_right"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtBox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, -128), Vector2(80, -128), Vector2(-16, -128)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7vx3w"]
 _data = {
 &"RESET": SubResource("Animation_7vx3w"),
@@ -87,11 +80,12 @@ _data = {
 script = ExtResource("1_7k104")
 
 [node name="EnemyBody" type="Sprite2D" parent="."]
-position = Vector2(0, -128)
-texture = SubResource("GradientTexture2D_4gyqm")
+position = Vector2(0, -134)
+scale = Vector2(4, 4)
+texture = ExtResource("2_7vx3w")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -128)
+position = Vector2(0, -134)
 shape = SubResource("RectangleShape2D_4gyqm")
 
 [node name="HurtBox" type="Area2D" parent="."]
