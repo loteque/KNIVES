@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dpk1vixr0lqri"]
+
+[ext_resource type="FontFile" uid="uid://bhe3wylma2c3g" path="res://ui/fonts/Adventurer.ttf" id="1_5mber"]
+
+[resource]
+default_font = ExtResource("1_5mber")
+default_font_size = 24
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_5mber")
+Label/font_sizes/font_size = 100
+Label/fonts/font = ExtResource("1_5mber")
+subtitlelabel/base_type = &"Label"
+subtitlelabel/font_sizes/font_size = 36
+subtitlelabel/fonts/font = ExtResource("1_5mber")
