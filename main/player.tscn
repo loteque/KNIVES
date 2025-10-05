@@ -1,0 +1,110 @@
+[gd_scene load_steps=12 format=3 uid="uid://baoqmbbxaihyb"]
+
+[ext_resource type="Script" uid="uid://cwy7twpialk4n" path="res://main/player.gd" id="1_4flbx"]
+
+[sub_resource type="Gradient" id="Gradient_4flbx"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_onrkg"]
+gradient = SubResource("Gradient_4flbx")
+height = 256
+fill_from = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
+size = Vector2(64, 256)
+
+[sub_resource type="Gradient" id="Gradient_4gyqm"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i3pqv"]
+gradient = SubResource("Gradient_4gyqm")
+width = 96
+height = 32
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
+size = Vector2(96, 32)
+
+[sub_resource type="Animation" id="Animation_ou4ca"]
+resource_name = "attack_right"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtBox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, -128), Vector2(80, -128), Vector2(-16, -128)]
+}
+
+[sub_resource type="Animation" id="Animation_ab3tm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtBox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-16, -128)]
+}
+
+[sub_resource type="Animation" id="Animation_4v151"]
+resource_name = "attack_left"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtBox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(16, -128), Vector2(-80, -128), Vector2(16, -128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ab3tm"]
+_data = {
+&"RESET": SubResource("Animation_ab3tm"),
+&"attack_left": SubResource("Animation_4v151"),
+&"attack_right": SubResource("Animation_ou4ca")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_4flbx")
+
+[node name="PlayerBody" type="Sprite2D" parent="."]
+position = Vector2(0, -128)
+texture = SubResource("GradientTexture2D_onrkg")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -128)
+shape = SubResource("RectangleShape2D_i3pqv")
+
+[node name="HurtBox" type="Area2D" parent="."]
+position = Vector2(-16, -128)
+
+[node name="Weapon" type="Sprite2D" parent="HurtBox"]
+texture = SubResource("GradientTexture2D_i3pqv")
+
+[node name="Collision" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_hqtel")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Cooldown" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ab3tm")
+}
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

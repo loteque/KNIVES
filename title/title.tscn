@@ -1,0 +1,196 @@
+[gd_scene load_steps=7 format=3 uid="uid://li3hyt8kfbse"]
+
+[ext_resource type="Script" uid="uid://crned3avkb4j8" path="res://title/title.gd" id="1_8qxnu"]
+[ext_resource type="FontFile" uid="uid://bhe3wylma2c3g" path="res://ui/fonts/Adventurer.ttf" id="2_nx56k"]
+[ext_resource type="FontFile" uid="uid://bf4gwerc68jto" path="res://ui/fonts/CompassGold.ttf" id="3_6s8lb"]
+
+[sub_resource type="Gradient" id="Gradient_nx56k"]
+offsets = PackedFloat32Array(0.5, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.5, 0.5, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6s8lb"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8xu2e"]
+noise = SubResource("FastNoiseLite_6s8lb")
+color_ramp = SubResource("Gradient_nx56k")
+seamless = true
+
+[node name="Title" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8qxnu")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_8xu2e")
+stretch_mode = 1
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -162.0
+offset_right = 198.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Content/Main"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_nx56k")
+theme_override_font_sizes/font_size = 88
+text = "Reclaimer"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Content/Main"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_nx56k")
+theme_override_font_sizes/font_size = 32
+text = "Nobody Ever Comes Home"
+horizontal_alignment = 1
+
+[node name="BtnNewGame" type="Button" parent="Content/Main"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6s8lb")
+theme_override_font_sizes/font_size = 40
+text = "New Game"
+
+[node name="BtnLoadGame" type="Button" parent="Content/Main"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6s8lb")
+theme_override_font_sizes/font_size = 40
+text = "Load Game"
+
+[node name="BtnOptions" type="Button" parent="Content/Main"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6s8lb")
+theme_override_font_sizes/font_size = 40
+text = "Options"
+
+[node name="BtnQuit" type="Button" parent="Content/Main"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6s8lb")
+theme_override_font_sizes/font_size = 40
+text = "Quit to Desktop"
+
+[node name="Load" type="VBoxContainer" parent="Content"]
+visible = false
+layout_mode = 2
+
+[node name="Head" type="Label" parent="Content/Load"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6s8lb")
+theme_override_font_sizes/font_size = 40
+text = "Select save file to load:"
+
+[node name="List" type="VBoxContainer" parent="Content/Load"]
+layout_mode = 2
+
+[node name="BtnBack" type="Button" parent="Content/Load"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6s8lb")
+theme_override_font_sizes/font_size = 40
+text = "Back"
+
+[node name="Options" type="VBoxContainer" parent="Content"]
+visible = false
+layout_mode = 2
+
+[node name="Head" type="Label" parent="Content/Options"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6s8lb")
+theme_override_font_sizes/font_size = 40
+text = "Game options:"
+
+[node name="List" type="GridContainer" parent="Content/Options"]
+layout_mode = 2
+columns = 3
+
+[node name="MusicText" type="Label" parent="Content/Options/List"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6s8lb")
+theme_override_font_sizes/font_size = 40
+text = "Music Volume: "
+
+[node name="Music" type="HSlider" parent="Content/Options/List"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MusicNum" type="Label" parent="Content/Options/List"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6s8lb")
+theme_override_font_sizes/font_size = 40
+text = "100"
+
+[node name="SFXText" type="Label" parent="Content/Options/List"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6s8lb")
+theme_override_font_sizes/font_size = 40
+text = "SFX Volume: "
+
+[node name="SFX" type="HSlider" parent="Content/Options/List"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="SFXNum" type="Label" parent="Content/Options/List"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6s8lb")
+theme_override_font_sizes/font_size = 40
+text = "100"
+
+[node name="UIText" type="Label" parent="Content/Options/List"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6s8lb")
+theme_override_font_sizes/font_size = 40
+text = "UI Volume: "
+
+[node name="UI" type="HSlider" parent="Content/Options/List"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="UINum" type="Label" parent="Content/Options/List"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6s8lb")
+theme_override_font_sizes/font_size = 40
+text = "100"
+
+[node name="BtnBack" type="Button" parent="Content/Options"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6s8lb")
+theme_override_font_sizes/font_size = 40
+text = "Back"
+
+[connection signal="pressed" from="Content/Main/BtnNewGame" to="." method="_on_btn_new_game_pressed"]
+[connection signal="pressed" from="Content/Main/BtnLoadGame" to="." method="_on_btn_load_game_pressed"]
+[connection signal="pressed" from="Content/Main/BtnOptions" to="." method="_on_btn_options_pressed"]
+[connection signal="pressed" from="Content/Main/BtnQuit" to="." method="_on_btn_quit_pressed"]
+[connection signal="pressed" from="Content/Load/BtnBack" to="." method="_on_btn_back_pressed"]
+[connection signal="pressed" from="Content/Options/BtnBack" to="." method="_on_btn_back_pressed"]

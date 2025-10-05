@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://deo4c3vyuwwli"]
+
+[ext_resource type="Script" uid="uid://cifscvpx05nts" path="res://main/main_game.gd" id="1_r4ock"]
+[ext_resource type="Texture2D" uid="uid://bhcxbw8kry3q4" path="res://ui/bar_bg.png" id="1_ykneo"]
+[ext_resource type="Texture2D" uid="uid://bx22lvp32l0bk" path="res://ui/bar_fg.png" id="2_r4ock"]
+[ext_resource type="Texture2D" uid="uid://b8427s4aj5p3o" path="res://ui/bar_fill.png" id="3_ex03x"]
+[ext_resource type="PackedScene" uid="uid://ccuai4dgv4dg0" path="res://main/enemy.tscn" id="4_yx71d"]
+[ext_resource type="PackedScene" uid="uid://baoqmbbxaihyb" path="res://main/player.tscn" id="5_dpe3l"]
+
+[node name="MainGame" type="Node2D"]
+script = ExtResource("1_r4ock")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Title" type="Label" parent="UI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -294.5
+offset_top = -102.5
+offset_right = 294.5
+offset_bottom = 102.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "KNIFE!
+The rusted and crumbling guts of the Old Cities lay bare, ripe for the picking!
+Prowl the ruins to collect all that matters in life: LOOT and KNIVES!
+
+Controls
+A and D to move left/right
+Space to stab
+I to open inventory (pauses game)"
+horizontal_alignment = 1
+
+[node name="Status" type="PanelContainer" parent="UI"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Content" type="GridContainer" parent="UI/Status"]
+layout_mode = 2
+columns = 2
+
+[node name="LifeText" type="Label" parent="UI/Status/Content"]
+layout_mode = 2
+text = "LIFE: "
+
+[node name="LifeBar" type="TextureProgressBar" parent="UI/Status/Content"]
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("1_ykneo")
+texture_over = ExtResource("2_r4ock")
+texture_progress = ExtResource("3_ex03x")
+tint_over = Color(1, 0.5, 0.5, 1)
+tint_progress = Color(1, 0, 0, 1)
+
+[node name="KnifeText" type="Label" parent="UI/Status/Content"]
+layout_mode = 2
+text = "KNIFE: "
+
+[node name="TextureRect" type="TextureRect" parent="UI/Status/Content"]
+layout_mode = 2
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+
+[node name="Enemy" parent="." instance=ExtResource("4_yx71d")]
+position = Vector2(802, 497)
+
+[node name="Player" parent="." instance=ExtResource("5_dpe3l")]
+position = Vector2(357, 499)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_top = 0
+limit_bottom = 720

@@ -1,0 +1,140 @@
+[gd_scene load_steps=13 format=3 uid="uid://ccuai4dgv4dg0"]
+
+[ext_resource type="Script" uid="uid://b2n8r8os5jb3e" path="res://main/enemy.gd" id="1_7k104"]
+
+[sub_resource type="Gradient" id="Gradient_7k104"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4gyqm"]
+gradient = SubResource("Gradient_7k104")
+height = 256
+fill_from = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
+size = Vector2(64, 256)
+
+[sub_resource type="Gradient" id="Gradient_4gyqm"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qi2p4"]
+gradient = SubResource("Gradient_4gyqm")
+width = 96
+height = 32
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iifgy"]
+size = Vector2(96, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8k2t6"]
+size = Vector2(512, 256)
+
+[sub_resource type="Animation" id="Animation_7vx3w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtBox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, -128)]
+}
+
+[sub_resource type="Animation" id="Animation_8k2t6"]
+resource_name = "attack_right"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtBox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, -128), Vector2(80, -128), Vector2(-16, -128)]
+}
+
+[sub_resource type="Animation" id="Animation_fgsch"]
+resource_name = "attack_left"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtBox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(16, -128), Vector2(-80, -128), Vector2(16, -128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7vx3w"]
+_data = {
+&"RESET": SubResource("Animation_7vx3w"),
+&"attack_left": SubResource("Animation_fgsch"),
+&"attack_right": SubResource("Animation_8k2t6")
+}
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_7k104")
+
+[node name="EnemyBody" type="Sprite2D" parent="."]
+position = Vector2(0, -128)
+texture = SubResource("GradientTexture2D_4gyqm")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -128)
+shape = SubResource("RectangleShape2D_4gyqm")
+
+[node name="HurtBox" type="Area2D" parent="."]
+position = Vector2(16, -128)
+
+[node name="Weapon" type="Sprite2D" parent="HurtBox"]
+texture = SubResource("GradientTexture2D_qi2p4")
+
+[node name="Collision" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_iifgy")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="DetectBox" type="Area2D" parent="."]
+position = Vector2(0, -128)
+
+[node name="Collision" type="CollisionShape2D" parent="DetectBox"]
+shape = SubResource("RectangleShape2D_8k2t6")
+
+[node name="Cooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="Think" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -256.0
+offset_right = 20.0
+offset_bottom = -233.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "IDLE"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7vx3w")
+}
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="body_entered" from="DetectBox" to="." method="_on_detect_box_body_entered"]
+[connection signal="body_exited" from="DetectBox" to="." method="_on_detect_box_body_exited"]
+[connection signal="timeout" from="Think" to="." method="_on_think_timeout"]
