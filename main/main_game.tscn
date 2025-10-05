@@ -137,6 +137,15 @@ centered = false
 [node name="Enemy" parent="." instance=ExtResource("4_yx71d")]
 position = Vector2(840, 592)
 
+[node name="Enemy2" parent="." instance=ExtResource("4_yx71d")]
+position = Vector2(1270, 592)
+
+[node name="Enemy3" parent="." instance=ExtResource("4_yx71d")]
+position = Vector2(1581, 592)
+
+[node name="Enemy4" parent="." instance=ExtResource("4_yx71d")]
+position = Vector2(1907, 592)
+
 [node name="Player" parent="." instance=ExtResource("5_dpe3l")]
 position = Vector2(348, 592)
 
