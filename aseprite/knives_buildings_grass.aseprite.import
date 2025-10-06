@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ya1u87uhlp2j"
+path="res://.godot/imported/knives_buildings_grass.aseprite-d28bfd1d827feeb7b643700f4c90c7c7.res"
+
+[deps]
+
+source_file="res://aseprite/knives_buildings_grass.aseprite"
+dest_files=["res://.godot/imported/knives_buildings_grass.aseprite-d28bfd1d827feeb7b643700f4c90c7c7.res"]
+
+[params]
+

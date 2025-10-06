@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://jfiq2can3wxr"
+path="res://.godot/imported/knives_buildings_ruins.aseprite-82f238ba5d79dffcde5693829a7a663a.res"
+
+[deps]
+
+source_file="res://aseprite/knives_buildings_ruins.aseprite"
+dest_files=["res://.godot/imported/knives_buildings_ruins.aseprite-82f238ba5d79dffcde5693829a7a663a.res"]
+
+[params]
+
