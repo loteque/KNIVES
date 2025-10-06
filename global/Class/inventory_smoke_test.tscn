@@ -1,14 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://bovdnr5kpb0r0"]
+[gd_scene load_steps=5 format=3 uid="uid://bovdnr5kpb0r0"]
 
 [ext_resource type="Script" uid="uid://bqsn5k32rwf7e" path="res://global/Class/inventory_smoke_test.gd" id="1_faofc"]
 [ext_resource type="Script" uid="uid://b2vdn881vvfcb" path="res://global/Class/Inventory.gd" id="2_dksjv"]
+[ext_resource type="PackedScene" uid="uid://be3mdjsyq43c7" path="res://ui/inventory/inventory_control.tscn" id="3_dksjv"]
+[ext_resource type="PackedScene" uid="uid://bcdl3g5dfwrqq" path="res://ui/inventory/inventory_slot.tscn" id="3_hjy4c"]
 
 [node name="inventory_smoke_test" type="Node" node_paths=PackedStringArray("inventory")]
 script = ExtResource("1_faofc")
 inventory = NodePath("Inventory")
 metadata/_custom_type_script = "uid://bqsn5k32rwf7e"
 
+[node name="InventoryControl" parent="." node_paths=PackedStringArray("inventory", "primary_slot", "secondary_slot") instance=ExtResource("3_dksjv")]
+visible = false
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 2
+inventory = NodePath("../Inventory")
+primary_slot = NodePath("../Equiped/HBoxContainer/Primary")
+secondary_slot = NodePath("../Equiped/HBoxContainer/Secondary")
+
+[node name="Equiped" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Equiped"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -82.0
+offset_right = 208.0
+grow_vertical = 0
+
+[node name="Primary" parent="Equiped/HBoxContainer" instance=ExtResource("3_hjy4c")]
+layout_mode = 2
+
+[node name="Secondary" parent="Equiped/HBoxContainer" instance=ExtResource("3_hjy4c")]
+layout_mode = 2
+
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("2_dksjv")
-max_size = 3
+max_size = 8
 metadata/_custom_type_script = "uid://b2vdn881vvfcb"
