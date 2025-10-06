@@ -1,0 +1,2 @@
+aseperite-wizard=https://thisisvini.com/aseprite-wizard/en/9.x-4/introduction/index.html#sp-instalation
+
