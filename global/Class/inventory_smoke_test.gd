@@ -5,29 +5,48 @@ extends Node
 
 func _pr_inv(inv: Inventory):
 	prints("inventory:", inv.items)
-	for key in inv.items:
-		prints(inv.items[key].name)
+	for item in inv.items:
+		prints(item.name)
 
 func _ready() -> void:
-	inventory.max_size = 3
+	var item1 := InventoryItem.new(InventoryItem.T.SWORD, &"sword", "", "")
+	item1.description = "a teeribel weapon to thrust upon thine enemies"
+	item1.img_desc = "weapon"
+	var item2 := InventoryItem.new(InventoryItem.T.SWORD, &"sword", "", "")
+	item2.description = "a cracked sword. you should probably get a new one"
+	item2.img_desc = "weapon"
+	var item3 := InventoryItem.new(InventoryItem.T.KNIFE, &"knife", "", "")
+	item3.description = "a good knife... for buttering toast"
+	item3.img_desc = "weapon"
+	var item4 := InventoryItem.new(InventoryItem.T.KNIFE, &"broken knife", "", "")
+	item4.description = "now that's a knife! I toe knife!"
+	item4.img_desc = "weapon"
+	var item5 := InventoryItem.new(InventoryItem.T.SWORD, &"sword", "", "")
+	item5.description = "a teeribel weapon to thrust upon thine enemies"
+	item5.img_desc = "weapon"
+	var item6 := InventoryItem.new(InventoryItem.T.SWORD, &"sword", "", "")
+	item6.description = "a cracked sword. you should probably get a new one"
+	item6.img_desc = "weapon"
+	var item7 := InventoryItem.new(InventoryItem.T.KNIFE, &"knife", "", "")
+	item7.description = "a good knife... for buttering toast"
+	item7.img_desc = "weapon"
+	var item8 := InventoryItem.new(InventoryItem.T.KNIFE, &"broken knife", "", "")
+	item8.description = "now that's a knife! I toe knife!"
+	item8.img_desc = "weapon"
 	
-	var item1 := InventoryItem.new(InventoryItem.T.SWORD, &"sword")
-	var item2 := InventoryItem.new(InventoryItem.T.SWORD, &"sword")
-	var item3 := InventoryItem.new(InventoryItem.T.KNIFE, &"knife")
-	var item4 := InventoryItem.new(InventoryItem.T.KNIFE, &"broken knife")
 	
 	var pr = func(): return _pr_inv(inventory)
 	pr.call()
-	inventory.add(item1)
+	inventory.update(item1, 0)
 	pr.call()
-	inventory.add(item2)
+	inventory.update(item2, 1)
 	pr.call()
-	inventory.add(item3)
+	inventory.update(item3, 2)
 	pr.call()
-	inventory.add(item4)
+	inventory.update(item4, 3)
 	pr.call()
-	prints("retrieve:", inventory.retrieve(2002).name)
+	var i = 0
+	for item in [item5, item6, item7, item8]:
+		inventory.update(item, 4 + i)
+		i+=1
 	pr.call()
-	inventory.add(item4)
-	pr.call()
-	

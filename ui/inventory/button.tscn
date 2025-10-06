@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://qvriwaqbjx1b"]
+
+[ext_resource type="Theme" uid="uid://dknefdsp16g4j" path="res://ui/inventory/inventory_base_theme.tres" id="1_di6qv"]
+
+[node name="Button" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_di6qv")
+text = "EMPTY"
