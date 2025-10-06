@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://be3mdjsyq43c7"]
+
+[ext_resource type="Script" uid="uid://bdwomogx7naie" path="res://ui/inventory/inventory_control.gd" id="1_ye8aw"]
+
+[sub_resource type="Theme" id="Theme_ye8aw"]
+
+[node name="InventoryControl" type="Control"]
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ye8aw")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ye8aw")
