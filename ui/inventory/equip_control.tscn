@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://7pbgba4yw2ro"]
+
+[ext_resource type="PackedScene" uid="uid://bcdl3g5dfwrqq" path="res://ui/inventory/inventory_slot.tscn" id="1_oig54"]
+
+[node name="EquipControl" type="Control"]
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -82.0
+offset_right = 208.0
+grow_vertical = 0
+
+[node name="Primary" parent="HBoxContainer" instance=ExtResource("1_oig54")]
+layout_mode = 2
+
+[node name="Secondary" parent="HBoxContainer" instance=ExtResource("1_oig54")]
+layout_mode = 2

@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://gfwaey7nskko"]
+
+[ext_resource type="Texture2D" uid="uid://c2ubpnijfikyk" path="res://aseprite/knives_buildings_grass_l_3_far_buildings.ase_layer_tex" id="1_lucxg"]
+[ext_resource type="Texture2D" uid="uid://c45sx60koqvl4" path="res://aseprite/knives_buildings_grass_l_2_distant_buildings.ase_layer_tex" id="2_46e6q"]
+[ext_resource type="Texture2D" uid="uid://5jwqepxhstga" path="res://aseprite/knives_buildings_grass_l_1_close_buildings.ase_layer_tex" id="3_355bh"]
+[ext_resource type="Texture2D" uid="uid://2fpyw8m2m1a5" path="res://aseprite/knives_buildings_grass_l_Ground.ase_layer_tex" id="4_jgsqe"]
+[ext_resource type="Texture2D" uid="uid://bnxvpwtepgp06" path="res://aseprite/knives_buildings_grass_l_Grass.ase_layer_tex" id="5_pyujf"]
+[ext_resource type="Texture2D" uid="uid://blbletkyw2qji" path="res://aseprite/knives_buildings_grass_l_0_foreground_bushes.ase_layer_tex" id="6_g2jmh"]
+
+[node name="Environment" type="Node2D"]
+
+[node name="Parallax2D3" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(530, 0)
+repeat_times = 3
+
+[node name="KnivesBuildingsGrassL3FarBuildings" type="Sprite2D" parent="Parallax2D3"]
+position = Vector2(0, 101)
+texture = ExtResource("1_lucxg")
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.55, 1)
+repeat_size = Vector2(530, 0)
+repeat_times = 3
+
+[node name="KnivesBuildingsGrassL2DistantBuildings" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(0, 101)
+texture = ExtResource("2_46e6q")
+
+[node name="Parallax2D4" type="Parallax2D" parent="."]
+repeat_size = Vector2(530, 0)
+repeat_times = 3
+
+[node name="KnivesBuildingsGrassL1CloseBuildings" type="Sprite2D" parent="Parallax2D4"]
+position = Vector2(0, 101)
+texture = ExtResource("3_355bh")
+
+[node name="KnivesBuildingsGrassLGround" type="Sprite2D" parent="Parallax2D4"]
+position = Vector2(0, 100)
+texture = ExtResource("4_jgsqe")
+
+[node name="KnivesBuildingsGrassLGrass" type="Sprite2D" parent="Parallax2D4"]
+position = Vector2(0, 101)
+texture = ExtResource("5_pyujf")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+z_index = 20
+y_sort_enabled = true
+scroll_scale = Vector2(1.5, 1)
+repeat_size = Vector2(530, 0)
+repeat_times = 3
+
+[node name="KnivesBuildingsGrassL0ForegroundBushes" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(0, 109)
+texture = ExtResource("6_g2jmh")

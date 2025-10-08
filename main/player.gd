@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED := 300.0
+@export var speed_mult: float = 1
 
 var damage : int = 1
 var inventory : Dictionary = {}
@@ -24,17 +25,18 @@ func _physics_process(_delta: float) -> void:
 		_attack()
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = direction * SPEED * speed_mult
 		_flipped = (velocity.x < 0)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, SPEED * speed_mult)
+	if abs(velocity.x) > 0: $AnimationPlayer.play("run")
 	move_and_slide()
 
 
 func _die():
 	#queue_free()
 	pass
-
+	
 
 func _attack():
 	if _flipped:

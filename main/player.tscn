@@ -1,17 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://baoqmbbxaihyb"]
+[gd_scene load_steps=16 format=3 uid="uid://baoqmbbxaihyb"]
 
 [ext_resource type="Script" uid="uid://cwy7twpialk4n" path="res://main/player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://be3mdjsyq43c7" path="res://ui/inventory/inventory_control.tscn" id="2_4v151"]
+[ext_resource type="Texture2D" uid="uid://cdfk4rnfwsa55" path="res://aseprite/knives_buildings_grass_l_x_guy_knife.ase_layer_tex" id="2_ab3tm"]
+[ext_resource type="Script" uid="uid://b2vdn881vvfcb" path="res://global/Class/Inventory.gd" id="3_pi8k8"]
+[ext_resource type="PackedScene" uid="uid://7pbgba4yw2ro" path="res://ui/inventory/equip_control.tscn" id="4_5ar6u"]
+[ext_resource type="Theme" uid="uid://dknefdsp16g4j" path="res://ui/inventory/inventory_base_theme.tres" id="5_5ar6u"]
 
-[sub_resource type="Gradient" id="Gradient_4flbx"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 1, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_onrkg"]
-gradient = SubResource("Gradient_4flbx")
-height = 256
-fill_from = Vector2(1, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v151"]
+atlas = ExtResource("2_ab3tm")
+region = Rect2(127, 193, 10, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
-size = Vector2(64, 256)
+size = Vector2(64, 217)
 
 [sub_resource type="Gradient" id="Gradient_4gyqm"]
 
@@ -22,23 +23,6 @@ height = 32
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
 size = Vector2(96, 32)
-
-[sub_resource type="Animation" id="Animation_ou4ca"]
-resource_name = "attack_right"
-length = 0.5
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HurtBox:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-16, -128), Vector2(80, -128), Vector2(-16, -128)]
-}
 
 [sub_resource type="Animation" id="Animation_ab3tm"]
 length = 0.001
@@ -53,6 +37,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-16, -128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerBody:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerBody:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -107.99999)]
 }
 
 [sub_resource type="Animation" id="Animation_4v151"]
@@ -72,6 +80,23 @@ tracks/0/keys = {
 "values": [Vector2(16, -128), Vector2(-80, -128), Vector2(16, -128)]
 }
 
+[sub_resource type="Animation" id="Animation_ou4ca"]
+resource_name = "attack_right"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtBox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, -128), Vector2(80, -128), Vector2(-16, -128)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ab3tm"]
 _data = {
 &"RESET": SubResource("Animation_ab3tm"),
@@ -82,18 +107,64 @@ _data = {
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_4flbx")
 
+[node name="InventoryControl" parent="." node_paths=PackedStringArray("inventory", "primary_slot", "secondary_slot") instance=ExtResource("2_4v151")]
+visible = false
+z_index = 21
+offset_top = 343.0
+offset_bottom = 343.0
+scale = Vector2(5, 5)
+inventory = NodePath("Inventory")
+primary_slot = NodePath("../EquipControl/HBoxContainer/Primary")
+secondary_slot = NodePath("../EquipControl/HBoxContainer/Secondary")
+
+[node name="Inventory" type="Node" parent="InventoryControl"]
+script = ExtResource("3_pi8k8")
+max_size = 3
+metadata/_custom_type_script = "uid://b2vdn881vvfcb"
+
+[node name="Label3" type="Label" parent="InventoryControl"]
+layout_mode = 0
+offset_left = 108.00001
+offset_top = -4.0
+offset_right = 199.0
+offset_bottom = 26.0
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "INVENTORY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EquipControl" parent="." instance=ExtResource("4_5ar6u")]
+z_index = 21
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1911.0
+offset_top = 287.0
+offset_right = -1911.0
+offset_bottom = 287.0
+grow_horizontal = 0
+scale = Vector2(5, 5)
+theme = ExtResource("5_5ar6u")
+
+[node name="Label2" type="Label" parent="EquipControl/HBoxContainer" index="2"]
+layout_mode = 2
+text = "EQUIPMENT"
+
 [node name="PlayerBody" type="Sprite2D" parent="."]
-position = Vector2(0, -128)
-texture = SubResource("GradientTexture2D_onrkg")
+position = Vector2(0, -107.99999)
+scale = Vector2(7, 7)
+texture = SubResource("AtlasTexture_4v151")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -128)
+position = Vector2(0, -108.5)
 shape = SubResource("RectangleShape2D_i3pqv")
 
 [node name="HurtBox" type="Area2D" parent="."]
 position = Vector2(-16, -128)
 
 [node name="Weapon" type="Sprite2D" parent="HurtBox"]
+visible = false
 texture = SubResource("GradientTexture2D_i3pqv")
 
 [node name="Collision" type="CollisionShape2D" parent="HurtBox"]
@@ -108,3 +179,6 @@ libraries = {
 }
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+
+[editable path="InventoryControl"]
+[editable path="EquipControl"]
