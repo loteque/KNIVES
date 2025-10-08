@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture-split-layer"
+type="PortableCompressedTexture2D"
+uid="uid://5jwqepxhstga"
+path="res://.godot/imported/knives_buildings_grass_l_1_close_buildings.ase_layer_tex-6e6733f667b315bf9dc1e48ae39206ae.res"
+
+[deps]
+
+source_file="res://aseprite/knives_buildings_grass_l_1_close_buildings.ase_layer_tex"
+dest_files=["res://.godot/imported/knives_buildings_grass_l_1_close_buildings.ase_layer_tex-6e6733f667b315bf9dc1e48ae39206ae.res"]
+
+[params]
+

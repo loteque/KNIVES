@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture-split-layer"
+type="PortableCompressedTexture2D"
+uid="uid://blbletkyw2qji"
+path="res://.godot/imported/knives_buildings_grass_l_0_foreground_bushes.ase_layer_tex-8adb95d67573801a3af304bad980e28c.res"
+
+[deps]
+
+source_file="res://aseprite/knives_buildings_grass_l_0_foreground_bushes.ase_layer_tex"
+dest_files=["res://.godot/imported/knives_buildings_grass_l_0_foreground_bushes.ase_layer_tex-8adb95d67573801a3af304bad980e28c.res"]
+
+[params]
+
