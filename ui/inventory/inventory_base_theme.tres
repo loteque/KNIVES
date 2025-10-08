@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dknefdsp16g4j"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dknefdsp16g4j"]
 
 [ext_resource type="StyleBox" uid="uid://7ykn62kwqau6" path="res://ui/inventory/style_box_flat_border.tres" id="1_b3lpi"]
+[ext_resource type="FontFile" uid="uid://c780w3p5m5wq7" path="res://ui/fonts/Kenney Pixel.ttf" id="1_leu42"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_leu42"]
 
@@ -10,6 +11,7 @@
 
 [resource]
 Button/font_sizes/font_size = 27
+Button/fonts/font = ExtResource("1_leu42")
 Button/styles/disabled = ExtResource("1_b3lpi")
 Button/styles/focus = SubResource("StyleBoxEmpty_leu42")
 Button/styles/hover = SubResource("StyleBoxEmpty_b3lpi")

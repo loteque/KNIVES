@@ -2,15 +2,19 @@
 
 [ext_resource type="Script" uid="uid://cifscvpx05nts" path="res://main/main_game.gd" id="1_r4ock"]
 [ext_resource type="Texture2D" uid="uid://bhcxbw8kry3q4" path="res://ui/bar_bg.png" id="1_ykneo"]
+[ext_resource type="PackedScene" uid="uid://gfwaey7nskko" path="res://main/environment.tscn" id="2_ex03x"]
 [ext_resource type="Texture2D" uid="uid://bx22lvp32l0bk" path="res://ui/bar_fg.png" id="2_r4ock"]
 [ext_resource type="Texture2D" uid="uid://b8427s4aj5p3o" path="res://ui/bar_fill.png" id="3_ex03x"]
-[ext_resource type="PackedScene" uid="uid://ccuai4dgv4dg0" path="res://main/enemy.tscn" id="4_yx71d"]
 [ext_resource type="PackedScene" uid="uid://baoqmbbxaihyb" path="res://main/player.tscn" id="5_dpe3l"]
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_r4ock")
 
+[node name="Environment" parent="." instance=ExtResource("2_ex03x")]
+
 [node name="UI" type="CanvasLayer" parent="."]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 
 [node name="Title" type="Label" parent="UI"]
 visible = false
@@ -69,14 +73,12 @@ text = "KNIFE: "
 [node name="TextureRect" type="TextureRect" parent="UI/Status/Content"]
 layout_mode = 2
 
-[node name="Parallax2D" type="Parallax2D" parent="."]
-
-[node name="Enemy" parent="." instance=ExtResource("4_yx71d")]
-position = Vector2(802, 497)
-
 [node name="Player" parent="." instance=ExtResource("5_dpe3l")]
-position = Vector2(357, 499)
+position = Vector2(29.00003, 192.00003)
+scale = Vector2(0.1, 0.1)
+speed_mult = 0.5
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+offset = Vector2(0.5, 0)
 limit_top = 0
-limit_bottom = 720
+limit_bottom = 240
