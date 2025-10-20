@@ -11,8 +11,8 @@ var max_slots: int
 var pickup: InventoryItem
 
 func _setup_btn_focus():
-	var f_btn = hbox.get_child(0).get_node("Button") as Button
-	var l_btn = hbox.get_child(inventory.items.size() - 1).get_node("Button") as Button
+	var f_btn := hbox.get_child(0).get_node("Button") as Button
+	var l_btn := hbox.get_child(inventory.items.size() - 1).get_node("Button") as Button
 	f_btn.focus_neighbor_left = l_btn.get_path()
 	l_btn.focus_neighbor_right = f_btn.get_path()
 	if not prev_selected_slot:
