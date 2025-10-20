@@ -14,7 +14,10 @@ var is_full: bool = false:
 		is_full_changed.emit(self)
 var items: Array[InventoryItem]:
 	set(d):
-		printerr("don't set value of Inventory items directly use .add() or .remove()")
+		printerr(
+			"don't set value of Inventory items directly use .update() or/
+			 .remove()"
+		)
 	get:
 		return _inventory_arr
 var _inventory_arr: Array[InventoryItem]
@@ -27,6 +30,7 @@ func update(inventory_item: InventoryItem, idx: int) -> void:
 	_inventory_arr[idx] = inventory_item
 	_first_empty_idx = _inventory_arr.find(InventoryItem.EMPTY)
 	if _first_empty_idx == -1: is_full = true
+
 
 
 func remove(idx: int) -> void:

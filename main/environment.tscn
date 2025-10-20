@@ -46,7 +46,7 @@ texture = ExtResource("5_pyujf")
 [node name="Parallax2D" type="Parallax2D" parent="."]
 z_index = 20
 y_sort_enabled = true
-scroll_scale = Vector2(1.5, 1)
+scroll_scale = Vector2(2, 1)
 repeat_size = Vector2(530, 0)
 repeat_times = 3
 
