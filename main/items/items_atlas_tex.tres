@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://dqokeeimvkugm"]
+
+[ext_resource type="Texture2D" uid="uid://cprv5dbk68m2w" path="res://aseprite/knives_items.aseprite" id="1_unsdv"]
+
+[resource]
+atlas = ExtResource("1_unsdv")
+region = Rect2(-1, -1, 161, 87)
