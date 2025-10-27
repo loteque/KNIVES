@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://c7nu11cjspl7p"]
+
+[ext_resource type="Script" uid="uid://c0noydh4se3j3" path="res://global/Class/ItemResource.gd" id="1_tskh6"]
+[ext_resource type="Texture2D" uid="uid://cprv5dbk68m2w" path="res://aseprite/knives_items.aseprite" id="2_0ovep"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6gip"]
+atlas = ExtResource("2_0ovep")
+region = Rect2(10, 0, 5, 8)
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_tskh6")
+tex = SubResource("AtlasTexture_c6gip")
+Type = 2000
+name = &"knife"
+Damage = 0.75
+metadata/_custom_type_script = "uid://c0noydh4se3j3"

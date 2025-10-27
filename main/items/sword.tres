@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://chnpa3qhiaa60"]
+
+[ext_resource type="Script" uid="uid://c0noydh4se3j3" path="res://global/Class/ItemResource.gd" id="1_63wnf"]
+[ext_resource type="Texture2D" uid="uid://cprv5dbk68m2w" path="res://aseprite/knives_items.aseprite" id="2_ramhb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pql30"]
+atlas = ExtResource("2_ramhb")
+region = Rect2(48, 3, 5, 13)
+
+[resource]
+script = ExtResource("1_63wnf")
+tex = SubResource("AtlasTexture_pql30")
+Type = 1000
+name = &"sword"
+Damage = 3.0
+armor = 0.5
+metadata/_custom_type_script = "uid://c0noydh4se3j3"

@@ -9,7 +9,8 @@ enum T {
 	FOOD = 4000,
 }
 var type: T
-var name: StringName 
+var name: StringName
+var item_res: ItemResource
 var description: String
 var img: Sprite2D
 var img_desc: String
